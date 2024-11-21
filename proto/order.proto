@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "go_clean_arq/proto;proto";
+
+message Order {
+    uint64 id = 1;
+    string item = 2;
+    int32 quantity = 3;
+}
+
+message ListOrdersRequest {}
+
+message ListOrdersResponse {
+    repeated Order orders = 1;
+}
+
+service OrderService {
+    rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+}
